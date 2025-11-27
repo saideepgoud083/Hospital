@@ -22,8 +22,12 @@ public class doctorcontroller {
 	private doctorService ds;
 	
 	@PostMapping("/Doctor")
-	public void Doctor(@RequestBody doctor d) {
-		ds.acceptDoctor(d);
+	public responcestucture<doctor> Doctor(@RequestBody doctor d) {
+		
+		
+	return	ds.acceptDoctor(d);
+		
+		
 	}
 	
 	/*********FINDDOCTOR*******/
