@@ -7,20 +7,22 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.alpha.Hospital.responcestucture;
+import com.alpha.Hospital.dto.patientdto;
 import com.alpha.Hospital.entity.Patient;
 import com.alpha.Hospital.entity.doctor;
 import com.alpha.Hospital.execption.allreadydoctorwasexiestonthsd;
 import com.alpha.Hospital.execption.allreadypatientwasexistwithid;
 import com.alpha.Hospital.execption.doctornotfound;
 import com.alpha.Hospital.repository.doctorrepo;
+import com.alpha.Hospital.repository.patient;
 
 
 @Service
 public class doctorService {
 @Autowired
 	private doctorrepo dr;
-
-
+@Autowired
+private patient pr ;
 
 
 	public responcestucture<doctor> acceptDoctor(doctor d) {
@@ -97,6 +99,27 @@ public class doctorService {
 		
 		return rs;
 	}
+
+
+
+
+
+	public void savepdto(patientdto pdto) {
+		 
+		
+	
+		Patient p = new Patient ();
+		 p.setName(pdto.getName());
+		 p.setAge(pdto.getAge());
+		 p.setDisease(pdto.getDisease());
+		 pr.save(p);
+	
+		
+		
+	}
+	
+	
+	
 
 	
 	

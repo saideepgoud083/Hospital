@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alpha.Hospital.responcestucture;
+import com.alpha.Hospital.dto.patientdto;
 import com.alpha.Hospital.entity.doctor;
 import com.alpha.Hospital.service.doctorService;
 
@@ -30,6 +31,19 @@ public class doctorcontroller {
 		
 		
 	}
+	
+	@PostMapping("/patient")
+	public void savepatient(@RequestBody patientdto pdto) {
+		
+		ds.savepdto(pdto);
+		
+		
+	}
+	
+	
+	
+	
+	
 	
 	/*********FINDDOCTOR*******/
 	

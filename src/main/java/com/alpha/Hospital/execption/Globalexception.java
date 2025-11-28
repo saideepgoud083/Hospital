@@ -25,8 +25,8 @@ public class Globalexception {
 		
 		
 		rs.setStatuscode(HttpStatus.ALREADY_REPORTED.value());	
-		rs.setMasg("doctor with id allready exist");
-		rs.setData("doctor with id allready exist");
+		rs.setMasg("doctor not found");
+		rs.setData("doctor not found");
 	
 	
 	return rs;
@@ -43,8 +43,8 @@ public class Globalexception {
 		
 		
 		rs.setStatuscode(HttpStatus.NOT_FOUND.value());	
-		rs.setMasg("doctor not found");
-		rs.setData("doctor  not found");
+		rs.setMasg("doctor allredy exist in thable with this id");
+		rs.setData("doctor allredy exist in thable with this id ");
 		
 		return rs ;
 		
