@@ -67,27 +67,37 @@ public class doctorService {
 
 	
 	/***************DELETING DOCTOR************/
-
-	public void deletstudent(int id) {
-		// TODO Auto-generated method stub
+	public responcestucture<String> deletstudent(int id) {
 		
-		dr.deleteById(id);
+		doctor d = dr.findById(id).orElseThrow(() -> new doctornotfound());
 		
+		dr.delete(d);
 		
+		responcestucture<String> rs = new responcestucture<String>();
+		rs.setStatuscode(HttpStatus.OK.value());
+		rs.setMasg("doctor deleted successfully with id " + id);
+		rs.setData("deleted");
 		
-		
+		return rs;
 	}
 
 	/***************UPDATING DOCTOR************/
-	public void updatedoctor(int id, String newname) {
+	public responcestucture<doctor> updatedoctor(int id, String newname) {
 		
+		doctor d = dr.findById(id).orElseThrow(() -> new doctornotfound());
 		
-		doctor d = dr.findById(id).get();
 		d.setName(newname);
-		dr.save(d);
 		
+		doctor updated = dr.save(d);
+		
+		responcestucture<doctor> rs = new responcestucture<doctor>();
+		rs.setStatuscode(HttpStatus.OK.value());
+		rs.setMasg("doctor updated successfully with id " + id);
+		rs.setData(updated);
+		
+		return rs;
 	}
-	
+
 	
 	
 	
