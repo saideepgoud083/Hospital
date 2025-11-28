@@ -50,7 +50,7 @@ public class doctorService {
 	
 	
 	
-	/*******finding doctor***********/
+	
 	public responcestucture<doctor> findst(int id) {
 		// TODO Auto-generated method stub
 		doctor d = dr.findById(id).orElseThrow(()-> new doctornotfound() );
@@ -66,7 +66,7 @@ public class doctorService {
 	}
 
 	
-	/***************DELETING DOCTOR************/
+	
 	public responcestucture<String> deletstudent(int id) {
 		
 		doctor d = dr.findById(id).orElseThrow(() -> new doctornotfound());

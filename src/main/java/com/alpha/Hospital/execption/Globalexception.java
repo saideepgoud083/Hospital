@@ -1,6 +1,13 @@
 package com.alpha.Hospital.execption;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -55,6 +62,37 @@ public class Globalexception {
 		return rs ;
 		
 	}
+	
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public responcestucture<Map<String, String>> handlemethodnotfound(MethodArgumentNotValidException ex) {
+		
+		Map<String,String> errormap = new HashMap<String,String>();
+		List<ObjectError> objerorr = ex.getAllErrors();
+		
+		for (ObjectError objecterroe : objerorr) {
+			
+			System.err.println(objecterroe.getDefaultMessage());
+			
+			FieldError fr =   (FieldError) objecterroe;
+			System.err.println(fr.getField());
+			
+			errormap.put(fr.getField(), objecterroe.getDefaultMessage());
+			
+		}
+		
+		
+		responcestucture<Map<String,String> > rs = new responcestucture<Map<String,String> >();
+		
+		rs.setStatuscode(HttpStatus.NOT_ACCEPTABLE.value());	
+		rs.setMasg("validationfailed");
+		rs.setData(errormap);
+		
+		
+		return rs;
+		
+	}	
+	
+	
 	
 	
 	

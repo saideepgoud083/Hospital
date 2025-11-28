@@ -1,6 +1,7 @@
 package com.alpha.Hospital.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +23,7 @@ public class doctorcontroller {
 	private doctorService ds;
 	
 	@PostMapping("/Doctor")
-	public responcestucture<doctor> Doctor(@RequestBody doctor d) {
+	public responcestucture<doctor> Doctor(@RequestBody  @Validated doctor d) {
 		
 		
 	return	ds.acceptDoctor(d);
