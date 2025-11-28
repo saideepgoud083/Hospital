@@ -39,24 +39,17 @@ public class doctorcontroller {
 		return ds.findst(id);
 	}
 	
-	/**********DELETING DOCTOR***********/
-	
+	/********* DELETE DOCTOR ***********/
 	@DeleteMapping("/deletdoctor")
-	public void deletstuden(@RequestParam int id) {
-		
-		
-		 ds.deletstudent(id);
+	public responcestucture<String> deletstuden(@RequestParam int id) {
+		return ds.deletstudent(id);   
 	}
 	
-	/***************UPDATING DOCTOR************/
-	
+	/********* UPDATE DOCTOR ***********/
 	@PutMapping("/updatedoctor")
-	public void updatestu(@RequestParam int id, @RequestParam String newname) {
-		
-		
-		 ds.updatedoctor(id,newname);
+	public responcestucture<doctor> updatestu(@RequestParam int id, @RequestParam String newname) {
+		return ds.updatedoctor(id, newname);   
 	}
-	
 	
 	
 }
